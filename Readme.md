@@ -14,7 +14,7 @@ Readme
 Tasks
 -
 
-1 Реалізувати `Magic 8 ball`
+1 Реалізувати [`Magic 8 ball`](https://ru.wikipedia.org/wiki/Magic_8_ball)
 -
 - Створити класс `Ball`
 - Реалізувати метод `shake`, який виводить відповідь в тому кольорі як на вікіпедії і повертає відповідь як `String`.
