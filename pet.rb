@@ -13,17 +13,18 @@ class Pet
     @salt_level = 100
     @old = 0
 
-    puts "Hello! your new best friend was born. His name is #{@name},
-          he is a Sea cucumber"
+    puts "Hello! your new best friend was born. His name is #{@name}, he is a Sea cucumber"
   end
 
   def add_mineral_salt_to_aquarium
+    add_empty_line
     puts 'Looks like water needs some sea sald'
     @salt_level = 100
     puts 'Woh it salted'
   end
 
   def add_water_to_aquarium
+    add_empty_line
     puts 'Lets add some water into your aquarium'
     @salt_level = @water
     @water = 100
@@ -31,6 +32,7 @@ class Pet
   end
 
   def clean_aquarium
+    add_empty_line
     puts 'Lets make it\'s clean!'
     @clean = 100
     time_spend 1
@@ -38,13 +40,19 @@ class Pet
   end
 
   def cook_cucumber_salad
+    add_empty_line
     puts 'I am hungry. I want a cucumber salad.'
     change_mood(-30)
     time_spend 1
     puts "Yamy!!! Why do you cry #{@name}?"
   end
 
-  def feed(food = 'plankton')
+  def feed(food = nil)
+    add_empty_line
+    if food.nil?
+      puts "Insert type of food, #{@name} like"
+      food = input_text
+    end
     if food.downcase == 'plankton'
       puts 'I am going to give you a lot of plankton'
       @hungry = @hungry + 50 > 100 ? 100 : @hungry + 50
@@ -58,10 +66,12 @@ class Pet
   end
 
   def help
+    add_empty_line
     puts HELP
   end
 
   def make_massage
+    add_empty_line
     puts 'Do you want some masage? I know you like it.'
     change_mood
     @health += 5
@@ -69,8 +79,13 @@ class Pet
     puts 'Yea, I have magic hangs'
   end
 
-  def on_music(style = 'classic')
+  def on_music(style = nil)
+    add_empty_line
     puts 'Do you want some music?'
+    if style.nil?
+      puts 'Enter ganre'
+      style = input_text
+    end
     if style == 'classic'
       puts 'Your favorite, Lindsay Stirling'
       change_mood
@@ -83,6 +98,7 @@ class Pet
   end
 
   def play
+    add_empty_line
     puts "Lets play with my friend #{@name}"
     game
     change_mood 10
@@ -91,6 +107,7 @@ class Pet
   end
 
   def status
+    add_empty_line
     puts "Name: #{@name}"
     puts "Alive: #{@alive}"
     puts "Hungry: #{@hungry}"
@@ -98,13 +115,18 @@ class Pet
     puts "Length: #{@length}sm"
     puts "Mood: #{@mood}"
     puts "Faigue: #{@fatigue}"
-    puts "Wather level: #{@water}"
+    puts "Water level: #{@water}"
     puts "Clean level: #{@clean}"
     puts "Salt level: #{@salt_level}"
     puts "Hours old: #{@old}"
   end
 
-  def sleep(hours)
+  def sleep(hours = nil)
+    add_empty_line
+    if hours.nil?
+      puts "How many hours do you wont to sleep"
+      hours = input_text.to_i
+    end
     puts "Goodnight #{@name}"
     @fatigue = 0
     time_spend(hours)
@@ -112,6 +134,7 @@ class Pet
   end
 
   def skip_day
+    add_empty_line
     puts 'I need do to some business. I will back tomorow'
     random_thing
     time_spend 24
@@ -119,13 +142,19 @@ class Pet
   end
 
   def skip_hour
+    add_empty_line
     puts 'Hour is skiped'
     time_spend 1
   end
 
-  def walk(aquarium = true)
+  def walk(aquarium = nil)
+    add_empty_line
+    if aquarium.nil?
+      puts 'Do you want to take aquarium?'
+      aquarium = input_text == 'yes' ? true : false
+    end
     if aquarium
-      puts 'I know you a sea animal. You need a wather. Lets take aquarium'
+      puts 'I know you a sea animal. You need a water. Lets take aquarium'
       change_mood
       puts 'It was fantastic!'
     else
@@ -137,12 +166,12 @@ class Pet
     time_spend 2
   end
 
-  private
-
   def alive?
     puts "#{@name} is dead. It is your false!" unless @alive
     @alive
   end
+
+  private
 
   def change_mood(value = 10)
     @mood += value
@@ -224,5 +253,13 @@ class Pet
       return unless @mood < 30
       puts "#{@name} tried to escape. But he is only cucumber. He can't escape"
     end
+  end
+
+  def input_text
+    gets.strip.downcase
+  end
+
+  def add_empty_line
+    puts "\n"
   end
 end
