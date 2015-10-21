@@ -1,0 +1,14 @@
+#add_water_to_aquarium - You can add some water into aquarium. If you don't do this, your animal can die
+#add_mineral_salt_to_aquarium - If you adde wather into aquarium, sald level will lover. So you need to add some salt
+#cook_cucumber_salad - Don't cook cucumber salad!. It can make your animal disappointed
+#clean_aquarium - You need clean aquarium sometimes. If a few water in it, it will dirty quickly
+#feed - Give some food for your sea cucucmber
+#make_massage - Your animal like a massage
+#on_music - Your can on music and choose genre (#on_music 'classic')
+#play - You can play with your animal. It is takes 3 hours spend
+#status - Out life status of your animal
+#sleep - You can choose how many hours your animal will sleep (#sleep 12)
+#skip_day - You can skip a day and see what will happen
+#skip_hour - You can skip one hour
+#walk - You can walk with your animal. Also you can choose if you need aquarium duiring your walk.
+	If you want don't wont take auarium enter parameter false into method '#walk false'
