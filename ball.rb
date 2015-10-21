@@ -6,8 +6,12 @@ class Ball
   end
 
   def shake
-    key = ANSWERS.keys.sample
-    answer = ANSWERS[key].sample
+    answers_hash = COLORS.keys.each_with_object({}) do |val, obj|
+      count = obj.count
+      obj[val] = ANSWERS[count * 2..count * 2 + 4] if ANSWERS.count > count * 2
+    end
+    key = answers_hash.keys.sample
+    answer = answers_hash[key].sample
     puts colorize(key, answer)
     answer
   end
